@@ -68,6 +68,13 @@
                 localStorage.setItem('isRegistered', 'true');
 
                 // GA4イベントトラッキングを初回表示時のみ実行
+                gtag('event', 'registration_complete', {
+                    'event_category': 'registration',
+                    'event_label': 'User Registered',
+                    'value': 1
+                });
+
+                // モーダルが表示されたときのトラッキング
                 gtag('event', 'modal_shown', {
                     'event_category': 'registration',
                     'event_label': 'Registration Modal Displayed',
