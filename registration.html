@@ -14,8 +14,31 @@
         .modal-content { background-color: #fff; margin: 15% auto; padding: 20px; width: 80%; text-align: center; }
         .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P6YDQDCWDW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P6YDQDCWDW');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TCT8V45W');</script>
+    <!-- End Google Tag Manager -->
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCT8V45W"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <h1>新規登録ページ</h1>
     <a href="index.html">トップページへ</a>
     <a href="detail.html">詳細ページへ</a>
@@ -42,39 +65,29 @@
         (function() {
             var script = document.createElement('script');
             script.async = true;
-            script.src = "https://www.googletagmanager.com/gtag/js?id=G-P6YDQDCWDW";  // GA4の測定IDをここに入れてください
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-P6YDQDCWDW";
             document.head.appendChild(script);
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
             gtag('js', new Date());
-            gtag('config', 'G-P6YDQDCWDW');  // GA4の測定IDをここに入れてください
+            gtag('config', 'G-P6YDQDCWDW');
             window.gtag = gtag;
         })();
 
         // ボタンをクリックした時の処理
         document.getElementById('registerBtn').addEventListener('click', function() {
-            // ローカルストレージに "isRegistered" が存在するかを確認
             const isRegistered = localStorage.getItem('isRegistered');
-
             if (isRegistered) {
-                // 2回目以降のユーザーにはアラートを表示
                 alert('すでに登録済みです。');
             } else {
-                // 初めてのユーザーにはモーダルを表示
                 modalMessage.textContent = '登録完了';
                 modal.style.display = 'block';
-
-                // 登録状態をローカルストレージに保存
                 localStorage.setItem('isRegistered', 'true');
-
-                // GA4イベントトラッキングを初回表示時のみ実行
                 gtag('event', 'registration_complete', {
                     'event_category': 'registration',
                     'event_label': 'User Registered',
                     'value': 1
                 });
-
-                // モーダルが表示されたときのトラッキング
                 gtag('event', 'modal_shown', {
                     'event_category': 'registration',
                     'event_label': 'Registration Modal Displayed',
